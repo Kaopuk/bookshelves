@@ -4,13 +4,25 @@
     <form [formGroup]="bookForm" (ngSubmit)="onSaveBook()">
       <div class="from-group">
         <label for="title">Titre</label>
-        <input type="text" class="form-control" id="title" formNameControl="title">
+        <input type="text" id="title" class="form-control" formControlName="title">
       </div>
       <div class="from-group">
         <label for="author">Auteur</label>
-        <input type="text" class="form-control" id="author" formNameControl="author">
+        <input type="text" id="author" class="form-control" formControlName="author">
       </div>
-      <button class="btn btn-success" [disabled]="bookForm.invalid" type="submit">Enregistrer</button>
+      <div class="from-group">
+        <label for="synopsis">synopsis</label>
+        <input type="text" id="synopsis" class="form-control" formControlName="synopsis">
+      </div>
+      <h4>Ajouter une photo</h4>
+      <input type="file" (change)="detectFiles($event)"
+             class="form-control" accept="image/*">
+      <img style="max-width: 100px" [src]="fileUrl" *ngIf="fileUploaded">
+      <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+
+      <button class="btn btn-success" [disabled]="bookForm.invalid || fileIsUploading"
+              type="submit">Enregistrer
+      </button>
     </form>
   </div>
 </div>
