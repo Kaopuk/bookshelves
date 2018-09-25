@@ -10,7 +10,7 @@
         <label for="password">Mot de passe</label>
         <input type="password" id="password" class="form-control" formControlName="password">
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="signInForm.invalid">Connexion</button>
+      <button class="btn btn-primary" type="submit" [disabled]="signInForm.invalid"><span class="glyphicon glyphicon-log-in"></span> Connexion</button>
     </form>
     <p class="danger">{{ errorMessage }}</p>
   </div>
